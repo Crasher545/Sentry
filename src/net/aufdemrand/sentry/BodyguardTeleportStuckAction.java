@@ -52,7 +52,7 @@ public class BodyguardTeleportStuckAction implements StuckAction {
 			@Override public void run() {
 				npc.teleport( loc, org.bukkit.event.player.PlayerTeleportEvent.TeleportCause.PLUGIN );	
 			}
-		}
+		};
 
 		plugin.getServer().getScheduler().scheduleSyncDelayedTask( plugin, tpEvent, 2 );
 

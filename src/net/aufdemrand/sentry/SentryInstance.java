@@ -889,6 +889,8 @@ public class SentryInstance {
 		// go twang
 		if (effect != null)
 			getMyEntity().getWorld().playEffect(getMyEntity().getLocation(), effect, null);
+		
+		faceEntity(getMyEntity(),theEntity);
 
 		if (myProjectile == Arrow.class){
 			Draw(false);
@@ -1456,7 +1458,15 @@ public class SentryInstance {
 					if (_projTargetLostLoc == null)
 						_projTargetLostLoc = projectileTarget.getLocation();
 
+
 					if (!getNavigator().isNavigating())	faceEntity(getMyEntity(), projectileTarget);
+
+					if(!getNavigator().isPaused()) {
+						getNavigator().setPaused(true);
+						getNavigator().cancelNavigation();
+						getNavigator().setTarget(SentryInstance.this.projectileTarget, true);
+					}
+
 
 					Draw(true);
 
@@ -1499,6 +1509,10 @@ public class SentryInstance {
 			}
 
 			else if (sentryStatus == Status.isLOOKING && myNPC.isSpawned()) {
+
+				if(getNavigator().isPaused()) {
+					getNavigator().setPaused(false);
+				}
 
 				if(getMyEntity().isInsideVehicle() == true) faceAlignWithVehicle(); //sync the rider with the vehicle.
 
