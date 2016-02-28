@@ -306,6 +306,7 @@ public class SentryListener implements Listener {
 										(to !=null && inst.containsTarget("event:pvsentry")))	{
 									//Valid event, attack
 									if (!inst.isIgnored((LivingEntity)entfrom)){
+										//bingo
 										inst.setTarget( (LivingEntity) entfrom, true); //attack the aggressor
 									}
 								}

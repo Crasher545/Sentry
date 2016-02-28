@@ -889,7 +889,7 @@ public class SentryInstance {
 		// go twang
 		if (effect != null)
 			getMyEntity().getWorld().playEffect(getMyEntity().getLocation(), effect, null);
-		
+
 		faceEntity(getMyEntity(),theEntity);
 
 		if (myProjectile == Arrow.class){
